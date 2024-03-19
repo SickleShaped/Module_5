@@ -4,15 +4,10 @@
     {
         static void Main(string[] args)
         {
-            int[] array = GetArrayFromConsole(5);
-            int[] sortedArray = SortArray(array);
-            foreach(var a in sortedArray)
-            {
-                Console.Write(a + " ");
-            }
+            int[] array = GetArrayFromConsole(10);
+            ShowArray(array);
+
         }
-
-
 
         static int[] GetArrayFromConsole(int num = 3)
         {
@@ -42,6 +37,18 @@
                 }
             }
             return array;
+        }
+
+        static void ShowArray(int[] array, bool isSort = false)
+        {
+            if (isSort==false)
+            {
+                array = SortArray(array);
+            }
+            foreach (var a in array)
+            {
+                Console.Write(a + " ");
+            }
         }
 
     }

@@ -4,30 +4,44 @@
     {
         static void Main(string[] args)
         {
-            var (name, age) = ("Санни", 24);
-            Console.WriteLine("Имя: " + name);
-            Console.WriteLine("Возраст: " + age);
-
-            var favcolors = new string[3];
-            for(int i = 0; i < favcolors.Length; i++)
+            int[] array = GetArrayFromConsole();
+            SortArray(array);
+            foreach(var a in array)
             {
-                favcolors[i] = ShowColor(name, age);
+                Console.Write(a + " ");
             }
-            Console.WriteLine("Мои любимые цвета: ");
-            foreach (var fav in favcolors)
-            {
-                Console.WriteLine(fav);
-            }
-
         }
 
 
 
-        static string ShowColor(string name, int age)
+        static int[] GetArrayFromConsole()
         {
-            Console.WriteLine($"{name}, {age} \nНапишите свой любимый цвет на английском с маленькой буквы");
-            string color = Console.ReadLine();
-            return color;
+            int[] array = new int[3];
+            
+            for(int i=0;i<array.Length; i++)
+            {
+                array[i] = Int32.Parse(Console.ReadLine());
+            }
+
+            return array;
+        }
+
+        static int[] SortArray(int[] array)
+        {
+            int temp;
+            for(int i=0;i<array.Length;i++)
+            {
+                for(int j=0;j<array.Length;j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+            return array;
         }
 
     }

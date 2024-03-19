@@ -4,16 +4,26 @@
     {
         static void Main(string[] args)
         {
-            string[] Dishes = new string[5];
-            
-            (string Name, string[] Dishes) User = ("Санни", Dishes);
-            
-            for(int i = 0; i<5; i++)
+            string[] favColors = new string[3];
+
+            for (int i = 0; i < favColors.Length; i++)
             {
-                Console.WriteLine($"Введите любимое блюда пользователя {User.Name} номер {i+1}");
-                User.Dishes[i] = Console.ReadLine();
+                favColors[i] = ShowColor(i);
+                Console.WriteLine("Любимый цвет - "+favColors[i]);
             }
 
         }
+
+
+
+        static string ShowColor(int iterator)
+        {
+            Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+            string color = Console.ReadLine();
+
+            return color;
+        }
+
     }
+    
 }

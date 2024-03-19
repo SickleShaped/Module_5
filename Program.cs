@@ -4,23 +4,29 @@
     {
         static void Main(string[] args)
         {
-            string[] favColors = new string[3];
+            var (name, age) = ("Санни", 24);
+            Console.WriteLine("Имя: " + name);
+            Console.WriteLine("Возраст: " + age);
 
-            for (int i = 0; i < favColors.Length; i++)
+            var favcolors = new string[3];
+            for(int i = 0; i < favcolors.Length; i++)
             {
-                favColors[i] = ShowColor(i);
-                Console.WriteLine("Любимый цвет - "+favColors[i]);
+                favcolors[i] = ShowColor(name, age);
+            }
+            Console.WriteLine("Мои любимые цвета: ");
+            foreach (var fav in favcolors)
+            {
+                Console.WriteLine(fav);
             }
 
         }
 
 
 
-        static string ShowColor(int iterator)
+        static string ShowColor(string name, int age)
         {
-            Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+            Console.WriteLine($"{name}, {age} \nНапишите свой любимый цвет на английском с маленькой буквы");
             string color = Console.ReadLine();
-
             return color;
         }
 

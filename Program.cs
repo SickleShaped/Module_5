@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            int[] array = GetArrayFromConsole();
-            SortArray(array);
-            foreach(var a in array)
+            int[] array = GetArrayFromConsole(5);
+            int[] sortedArray = SortArray(array);
+            foreach(var a in sortedArray)
             {
                 Console.Write(a + " ");
             }
@@ -14,9 +14,9 @@
 
 
 
-        static int[] GetArrayFromConsole()
+        static int[] GetArrayFromConsole(int num = 3)
         {
-            int[] array = new int[3];
+            int[] array = new int[num];
             
             for(int i=0;i<array.Length; i++)
             {

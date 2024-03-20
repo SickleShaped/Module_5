@@ -4,85 +4,30 @@
     {
         static void Main(string[] args)
         {
-            int number = 3;
-            int[] sorteddesk;
-            int[] sortedask;
-            int[] array = GetArrayFromConsole(ref number);
-            SortArray(array, out sorteddesk, out sortedask);
-            ///ShowArray(array);
-            Console.WriteLine("");
-            ShowArray(sorteddesk);
-            Console.WriteLine("");
-            ShowArray(sortedask);
+            Console.WriteLine("Напишите что-то");
+            var str = Console.ReadLine();
+
+            Console.WriteLine("Укажите глубину эха");
+            var deep = int.Parse(Console.ReadLine());
+
+            Echo(str, deep);
+
+            Console.ReadKey();
 
         }
 
-        static int[] GetArrayFromConsole(ref int num)
+        static void Echo(string saidworld, int deep)
         {
-            int[] array = new int[num];
-            
-            for(int i=0;i<array.Length; i++)
+            var modif = saidworld;
+            if (modif.Length >= 2)
             {
-                array[i] = Int32.Parse(Console.ReadLine());
+                modif = modif.Remove(0, 2);
             }
+            Console.WriteLine("..."+modif);
 
-            return array;
-        }
-
-        static void SortArray(in int[] array, out int[] sorteddesk, out int[] sortedask)
-        {
-            sorteddesk = SortArrayDesc(array);
-            sortedask = SortArrayAsc(array);
-        }
-
-        static int[] SortArrayDesc(int[] array)
-        {
-            int[] sorteddesc = new int[array.Length];
-            int temp;
-            for (int i = 0; i < array.Length; i++)
+            if (deep > 1)
             {
-                for (int j = 0; j < array.Length; j++)
-                {
-                    if (array[i] > array[j])
-                    {
-                        temp = array[i];
-                        array[i] = array[j];
-                        array[j] = temp;
-                        sorteddesc[i] = array[i];
-                        sorteddesc[j] = array[j];
-                    }
-                }
-            }
-            return sorteddesc;
-        }
-
-        static int[] SortArrayAsc(int[] array)
-        {
-            int[] sortedasc = new int[array.Length];
-            int temp;
-            for (int i = 0; i < array.Length; i++)
-            {
-                for (int j = 0; j < array.Length; j++)
-                {
-                    if (array[i] < array[j])
-                    {
-                        temp = array[i];
-                        array[i] = array[j];
-                        array[j] = temp;
-                        sortedasc[i] = array[i];
-                        sortedasc[j] = array[j];
-                    }
-                }
-            }
-            return sortedasc;
-        }
-
-        static void ShowArray(int[] array)
-        {
-
-            foreach (var a in array)
-            {
-                Console.Write(a + " ");
+                Echo(modif, deep - 1);
             }
         }
 

@@ -4,32 +4,43 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Напишите что-то");
-            var str = Console.ReadLine();
+            Console.WriteLine("укажите число");
+            var N = Int32.Parse(Console.ReadLine());
 
-            Console.WriteLine("Укажите глубину эха");
-            var deep = int.Parse(Console.ReadLine());
+            Console.WriteLine("Укажите степень");
+            var pow = Byte.Parse(Console.ReadLine());
 
-            Echo(str, deep);
+            int result = PowerUp(N, pow) ;
+            Console.WriteLine(result);
 
             Console.ReadKey();
 
         }
 
-        static void Echo(string saidworld, int deep)
+        private static int PowerUp(int N, byte pow)
         {
-            var modif = saidworld;
-            if (modif.Length >= 2)
+            int result = 0;
+            if (pow == 0)
             {
-                modif = modif.Remove(0, 2);
+                result = 1;
             }
-            Console.BackgroundColor = (ConsoleColor)deep;
-            Console.WriteLine("..."+modif);
+            else
+            {
 
-            if (deep > 1)
-            {
-                Echo(modif, deep - 1);
+                if (pow == 1)
+                {
+                    return N;
+
+                }
+                else
+                {
+                    result = PowerUp(N, (byte)(pow - 1))*N;
+
+                }
             }
+
+            return result;
+
         }
 
     }
